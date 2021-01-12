@@ -146,40 +146,31 @@ public class SetUpServer {
 	
 	public static String newServer(Servers chosenServer) throws IOException {
 		String name = chosenServer.getName();
+		@SuppressWarnings("unused")
 		boolean LAN = chosenServer.getLan();
 		File server = new File("server\\steamapps\\common\\U3DS\\" + name + ".bat");
 		String path = server.getAbsolutePath();
 		if (LAN = true) {
-			if (server.createNewFile()) {
-		        System.out.println("File created: " + server.getName());
-		        FileWriter myWriter = new FileWriter(server);
-		        try {
-					myWriter.write(" start \"\" \"%~dp0ServerHelper.bat\" +LanServer/" + name);
-					myWriter.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-		        System.out.println("Successfully wrote to the file.");
-		      } else {
-		        System.out.println("File already exists.");
-		      }
+			System.out.println("File created: " + server.getName());
+		    FileWriter myWriter = new FileWriter(server);
+		    try {
+		    	myWriter.write(" start \"\" \"%~dp0ServerHelper.bat\" +LanServer/" + name);
+		    	myWriter.close();
+		    } catch (IOException e) {
+				e.printStackTrace();
+			}
+		    System.out.println("Successfully wrote to the file.");
 		} else {
-			Boolean portforward = false;
 			System.out.println("have you port forwarded?");
-			portforward = LAN;
-			if (server.createNewFile() && portforward == true) {
-		        System.out.println("File created: " + server.getName());
-		        FileWriter myWriter = new FileWriter(server);
-		        try {
-					myWriter.write(" start \"\" \"%~dp0ServerHelper.bat\" +InternetServer/" + name);
-					myWriter.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-		        System.out.println("Successfully wrote to the file.");
-		      } else {
-		        System.out.println("File already exists.");
-		      }
+		    System.out.println("File created: " + server.getName());
+		    FileWriter myWriter = new FileWriter(server);
+		    try {
+		    	myWriter.write(" start \"\" \"%~dp0ServerHelper.bat\" +InternetServer/" + name);
+				myWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		    System.out.println("Successfully wrote to the file.");
 		}
 		File directory = new File("server\\steamapps\\common\\U3DS\\Servers\\" + name);
 		if (!directory.exists()) {

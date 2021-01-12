@@ -482,7 +482,7 @@ public class UnturnedGUI extends JFrame{
         	}});
         panel_3.add(finalContinue);
         
-        JButton btnRefresh = new JButton("REfresh");
+        JButton btnRefresh = new JButton("Refresh");
         btnRefresh.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		printResults.setText("name = " + serverName
@@ -490,7 +490,7 @@ public class UnturnedGUI extends JFrame{
                 		+ "\nport = " + port
                 		+ "\nmap = " + map
                 		+ "\nhas password = " + hasPassword
-                		+ "password = " + passText
+                		+ "\npassword = " + passText
                 		+ "\nmax players = " + players
                 		+ "\nPvP = " + PvP
                 		+ "\nview = " + perspective
