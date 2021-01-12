@@ -117,6 +117,7 @@ public class TextAreaLogProgram extends JFrame {
             public void run() {
 
                 System.out.println("Time now is " + (new Date()));
+                System.out.println("please wait for cmd to start...");
                 @SuppressWarnings("unused")
 				String s = null;
 

@@ -58,6 +58,10 @@ public class UnturnedGUI extends JFrame{
 	private static String values[];
   
 	public UnturnedGUI() {
+		getContentPane().setBackground(Color.GREEN);
+		setForeground(new Color(0, 100, 0));
+		File icon = new File("Images\\icon.png");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(icon.getAbsolutePath()));
 		setTitle("Unturned Server Builder");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
