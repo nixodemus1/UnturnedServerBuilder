@@ -8,4 +8,6 @@ I hope this helps make things easier and i hope you have fun playing unturned wi
 
 Have fun and enjoy!
 
+also, i now have a form you can fill out if you run into bugs: https://forms.gle/A9ypgUFbS15Ckpyk7
+
 I am in no way associated with unturned and have nothing to do with the game. The game was made and owned by SmartlyDressedGames!
