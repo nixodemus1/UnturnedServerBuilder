@@ -5,6 +5,10 @@ package unturnedServer;
 
 
 /**
+ * This is the object and how I hold all the server information as well as the
+ * get/set methods. DO NOT CHANGE unless you're VERY familiar with how everything
+ * works and fits together
+ * 
  * @author nchow
  *
  */
