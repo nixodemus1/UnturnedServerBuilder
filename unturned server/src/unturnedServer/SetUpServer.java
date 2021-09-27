@@ -1,5 +1,5 @@
 /**
- * 
+ * Main package for the whole Server Maker
  */
 package unturnedServer;
 
@@ -12,16 +12,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * @author nchow
- *
+ * This is the soul of the USM and where all the main commands run from
+ * @author Nixodemus1
+ * 
  */
 public class SetUpServer {
+	//these grab the steamcmd and creat a path as well as initialize an arraylist of servers
 	static File cmd = new File("server\\steamcmd.exe");
 	static String path = cmd.getAbsolutePath();
 	static int serverChoice = 0;
 	private static ArrayList<Servers> servers;
 	
-	
+	/**
+	 * This function takes whatever is currently being read and prints the results
+	 * out to a file. I believe I used this to show the steamcmd text on screen
+	 * in the gui
+	 * @author Nixodemus1
+	 * @throws IOException throws input/output error if it can not be read/found
+	 * @param process The readable output of the steamcmd
+	 */
 	public static void printResults(Process process) throws IOException {
 	    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 	    String line = "";
@@ -31,7 +40,13 @@ public class SetUpServer {
 	    reader.close();
 	}
 	
-	
+	/**
+	 * upon first startup, this function is called to write the command list that
+	 * steamcmd will read from and run.
+	 * @author Nixodemus
+	 * @throws IOException will throw an input/output exception if file can not be
+	 * 						found/read
+	 */
 	public static void writeCommands() {
 		try {
 		      File myObj = new File("server//Commands.txt");
@@ -56,6 +71,14 @@ public class SetUpServer {
 		    }
 	}
 	
+	/**
+	 * This looks for a file containing the data of all the servers you have crated
+	 * if the file is not there it will create a new one.
+	 * @author Nixodemus1
+	 * @throws IOException will throw an input/output exception if file can not be
+	 * 						read for whatever reason
+	 * @return this returns the newly loaded servers to be put in the arraylist
+	 */
 	public static ArrayList<Servers> loadServers() {
 		try {
 		      File myObj = new File("server//Servers.txt");
@@ -113,6 +136,15 @@ public class SetUpServer {
 		return servers;
 	}
 	
+	/**
+	 * This will run the the command.txt through steam CMD on startup in order to
+	 * make sure that the game is updated so you dont have to do it manually every time
+	 * 
+	 * @author Nixodemus1
+	 * @throws IllegalArguemntException if it can not find the path to either the steamCMD
+	 * 									or the command.txt list for whatever reason
+	 * @throws IOException will throw an input/output error if the file could not be read/found
+	 */
 	public static void keepUpdated() {
 		try {
 			if (! cmd.exists()) {
@@ -132,6 +164,13 @@ public class SetUpServer {
 		}
 	}
 	
+	/**
+	 * This function is made to return whichever server was chosen out of the list
+	 * of server that are available
+	 * @param servers the arraylist of servers the player owns
+	 * @return serverChoice the specific server that the player has chosen (is a server object)
+	 * @author Nixodemus1
+	 */
 	public static int chooseServer(ArrayList<Servers> servers) {
 		int serverChoice;
 		Scanner sc = new Scanner(System.in);
@@ -144,6 +183,12 @@ public class SetUpServer {
 		return serverChoice;
 	}
 	
+	/**
+	 * Creates a new server.
+	 * @param chosenServer a blank server object waiting to be personalized
+	 * @return the path to that brand new created server
+	 * @throws IOException throws input/ouput error if it can not find/read the files
+	 */
 	public static String newServer(Servers chosenServer) throws IOException {
 		String name = chosenServer.getName();
 		@SuppressWarnings("unused")
@@ -180,6 +225,16 @@ public class SetUpServer {
 		return path;
 	}
 	
+	/**
+	 * This method takes the server options the player has chosen, and uses that to
+	 * edit the server to reflect the chosen options. turns it into data the server
+	 * can actually read. as well as updates the object with the current options
+	 * 
+	 * @param chosenServer the current server with all of its options
+	 * @return chosenServer gives back the server after it has updated the options.
+	 * @throws IOException throws input/output excpetion if it cant read/find the file
+	 * @author Nixodemus1
+	 */
 	public static Servers choseOptions(Servers chosenServer) {
 		String name = chosenServer.getName();
 		int map = chosenServer.getMap();
@@ -255,6 +310,13 @@ public class SetUpServer {
 		return chosenServer;
 	}
 	
+	/**
+	 * saves all the servers the player has made with its updated options to a file
+	 * so it can be read later.
+	 * @param servers array list of saved servers that will be saved to file
+	 * @throws IOException input/output exception for when file cant be found/read
+	 * @author Nixodemus1
+	 */
 	public static void saveServer(ArrayList<Servers> servers) {
 		File myObj = new File("server//Servers.txt");
 	    System.out.println("File opening: " + myObj.getName());
@@ -284,6 +346,12 @@ public class SetUpServer {
         System.out.println("Successfully saved your servers.");
 	}
 	
+	/**
+	 * launches the server. Its right there in the name, I dont know what you 
+	 * were expecting
+	 * @param chosenServer the server that will be launched
+	 * @author Nixodemus1
+	 */
 	public static void launchServer(Servers chosenServer) {
 		String path = chosenServer.getPath();
 		Process process;
