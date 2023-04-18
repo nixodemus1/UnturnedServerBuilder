@@ -11,12 +11,17 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Window.Type;
 
 //class extends JFrame and implements actionlistener 
 @SuppressWarnings("serial")
@@ -45,7 +50,7 @@ public class UnturnedGUI extends JFrame {
 	static ArrayList<WorkShop> chosenModList;
 	final DefaultListModel<WorkShop> mods = new DefaultListModel<WorkShop>();
     final DefaultListModel<WorkShop> allTheMods = new DefaultListModel<WorkShop>();
-    final DefaultListModel selectedMods = new DefaultListModel();
+    final DefaultListModel<WorkShop> selectedMods = new DefaultListModel<WorkShop>();
 	WorkShop mod;
 	static boolean isModMap;
 	static boolean useModMap;
@@ -64,6 +69,7 @@ public class UnturnedGUI extends JFrame {
 	private static JCheckBox chckbxNewCheckBox_1;
 	private static JCheckBox passwordChecker;
 	private static JCheckBox chckbxLAN;
+	private PrintStream standardOut;
 
 	static File cmd = new File("server\\steamcmd.exe");
 	static String path = cmd.getAbsolutePath();
@@ -73,11 +79,12 @@ public class UnturnedGUI extends JFrame {
 	private JTextField workShopURL;
 
 	public UnturnedGUI() {
-		getContentPane().setBackground(Color.GREEN);
+		setBackground(Color.BLACK);
+		getContentPane().setBackground(new Color(0, 128, 0));
 		setForeground(new Color(0, 100, 0));
 		File icon = new File("Images\\icon.png");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(icon.getAbsolutePath()));
-		setTitle("Unturned Server Builder");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Nick Chowa\\git\\UnturnedServerBuilder\\unturned server\\Images\\icon.png"));
+		setTitle("Unturned Server Maker 3.0");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// to get the content
@@ -117,10 +124,13 @@ public class UnturnedGUI extends JFrame {
 		card_1.add(startButton, BorderLayout.SOUTH);
 
 		JPanel card1 = new JPanel();
+		card1.setBackground(new Color(0, 0, 0));
 		getContentPane().add(card1, "name_4426547071500");
 		card1.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel = new JLabel("Wait for the consol to say \"you may press continue\"");
+		lblNewLabel.setForeground(new Color(255, 215, 0));
+		lblNewLabel.setBackground(new Color(0, 100, 0));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		card1.add(lblNewLabel, BorderLayout.NORTH);
 
@@ -129,30 +139,41 @@ public class UnturnedGUI extends JFrame {
 
 		// Create an instance of javax.swing.JTextArea control
 		JTextArea textPane = new JTextArea();
+		textPane.setForeground(new Color(255, 215, 0));
+		textPane.setBackground(new Color(0, 0, 0));
 		scrollPane_2.setViewportView(textPane);
 		textPane.setEditable(false);
+		//turn the text area into a printstream
 		PrintStream printStream = new PrintStream(new CustomOutputStream(textPane));
-		// re-assigns standard output stream and error output stream
+		// re-assigns standard output stream and error output stream to printstream
+		standardOut = System.out;
 		System.setOut(printStream);
 		System.setErr(printStream);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 0, 0));
 		card1.add(panel, BorderLayout.SOUTH);
 
 		JButton continue1 = new JButton("Continue");
+		continue1.setBackground(new Color(255, 255, 255));
+		continue1.setForeground(new Color(0, 0, 0));
 		panel.add(continue1);
 		continue1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.setOut(standardOut);
+				System.setErr(standardOut);
 				card.next(c);
 			}
 		});
 
 		JPanel card2 = new JPanel();
+		card2.setBackground(new Color(0, 0, 0));
 		card2.setToolTipText("chose your server!");
 		getContentPane().add(card2, "name_4644937493500");
 		card2.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblserverChooser = new JLabel("Please choose a server");
+		lblserverChooser.setForeground(new Color(255, 215, 0));
 		lblserverChooser.setHorizontalAlignment(SwingConstants.CENTER);
 		card2.add(lblserverChooser, BorderLayout.NORTH);
 
@@ -160,12 +181,15 @@ public class UnturnedGUI extends JFrame {
 		card2.add(scrollPane, BorderLayout.CENTER);
 
 		JList<String> list = new JList<String>();
+		list.setBackground(new Color(0, 0, 0));
+		list.setForeground(new Color(255, 215, 0));
 		DefaultListModel serverModel  = new DefaultListModel();
 		for (int i = 0;i < servers.size(); i++) {
 			Servers tempWork = servers.get(i);
 			serverModel.addElement(tempWork);
 		}
 		list.setModel(serverModel);
+		list.setSelectedIndex(0);
 
 		scrollPane.setViewportView(list);
 		list.setToolTipText("choose your server!");
@@ -173,6 +197,8 @@ public class UnturnedGUI extends JFrame {
 		list.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JSplitPane splitPane = new JSplitPane();
+		splitPane.setForeground(new Color(0, 0, 0));
+		splitPane.setBackground(new Color(0, 0, 0));
 		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		splitPane.setAlignmentX(Component.CENTER_ALIGNMENT);
 		splitPane.setContinuousLayout(true);
@@ -228,10 +254,12 @@ public class UnturnedGUI extends JFrame {
 		splitPane.setRightComponent(deleteButton);
 
 		JPanel card3 = new JPanel();
+		card3.setBackground(new Color(0, 0, 0));
 		getContentPane().add(card3, "name_4760098863600");
 		card3.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("please name your new server");
+		lblNewLabel_1.setForeground(new Color(255, 215, 0));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		card3.add(lblNewLabel_1, BorderLayout.NORTH);
 
@@ -246,6 +274,8 @@ public class UnturnedGUI extends JFrame {
 		panel_1.add(textField, BorderLayout.NORTH);
 		
 		JTextArea txtpnServerNameMust = new JTextArea();
+		txtpnServerNameMust.setForeground(new Color(255, 215, 0));
+		txtpnServerNameMust.setBackground(new Color(0, 0, 0));
 		txtpnServerNameMust.setLineWrap(true);
 		txtpnServerNameMust.setWrapStyleWord(true);
 		txtpnServerNameMust.setText("server name must be more than 5 characters long. Please use _ instead of spaces. Thank you!");
@@ -253,6 +283,7 @@ public class UnturnedGUI extends JFrame {
 		panel_1.add(txtpnServerNameMust, BorderLayout.CENTER);
 
 		JButton continue3 = new JButton("Continue");
+		continue3.setBackground(new Color(0, 100, 0));
 		continue3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				server.setName(textField.getText());
@@ -264,6 +295,7 @@ public class UnturnedGUI extends JFrame {
 		card3.add(continue3, BorderLayout.SOUTH);
 
 		JPanel card4 = new JPanel();
+		card4.setBackground(new Color(0, 0, 0));
 		getContentPane().add(card4, "name_4867586771400");
 		card4.setLayout(new BorderLayout(0, 0));
 
@@ -271,6 +303,8 @@ public class UnturnedGUI extends JFrame {
 		card4.add(scrollPane_1, BorderLayout.CENTER);
 
 		JTextArea txtrYouShouldSee = new JTextArea();
+		txtrYouShouldSee.setForeground(new Color(255, 215, 0));
+		txtrYouShouldSee.setBackground(new Color(0, 0, 0));
 		txtrYouShouldSee.setEditable(false);
 		scrollPane_1.setViewportView(txtrYouShouldSee);
 		txtrYouShouldSee.setWrapStyleWord(true);
@@ -279,6 +313,7 @@ public class UnturnedGUI extends JFrame {
 		txtrYouShouldSee.setRows(5);
 		txtrYouShouldSee.setLineWrap(true);
 		txtrYouShouldSee.setColumns(20);
+		
 
 		JButton Continue4 = new JButton("Continue");
 		Continue4.addActionListener(new ActionListener() {
@@ -511,6 +546,7 @@ public class UnturnedGUI extends JFrame {
 		panel_2.add(btnSave);
 
 		JPanel card5_1 = new JPanel();
+		card5_1.setBackground(new Color(0, 0, 0));
 		getContentPane().add(card5_1, "name_48160497111000");
 		card5_1.setLayout(new BoxLayout(card5_1, BoxLayout.Y_AXIS));
 
@@ -518,10 +554,13 @@ public class UnturnedGUI extends JFrame {
 		card5_1.add(scrollPane_6);
 
 		JTextPane printResults = new JTextPane();
+		printResults.setForeground(new Color(255, 215, 0));
+		printResults.setBackground(new Color(0, 0, 0));
 		printResults.setText("press refresh to check results");
 		scrollPane_6.setViewportView(printResults);
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(0, 128, 0));
 		card5_1.add(panel_3);
 
 		JButton btnBackButton = new JButton("Back");
@@ -539,7 +578,6 @@ public class UnturnedGUI extends JFrame {
 				try {
 					SetUpServer.changeBat(server);
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				card.next(c);
@@ -594,6 +632,7 @@ public class UnturnedGUI extends JFrame {
 				}
 			}
 		});
+		
 		for(int i = 0;i < modList.size();i++) {
 			WorkShop tempWork = modList.get(i);
 			if (tempWork.getMap() == true) {
@@ -601,6 +640,16 @@ public class UnturnedGUI extends JFrame {
 			}
 		}
 		JList modMaps = new JList(mods);
+		modMaps.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				selectedMods.removeElement(mod);
+				if (!(modMaps.getSelectedIndex() == -1 || modMaps.getSelectedIndex() == 0)) {
+					selectedMods.addElement((WorkShop) modMaps.getSelectedValue());
+				}
+				mod = (WorkShop) modMaps.getSelectedValue();
+			}
+		});
+		modMaps.setSelectedIndex(0);
 		JButton btnNewButton_1 = new JButton("Add");
 		btnNewButton_1.addActionListener(new ActionListener() {
 
@@ -627,30 +676,18 @@ public class UnturnedGUI extends JFrame {
 		SelectMap.setBackground(new Color(0, 128, 0));
 		tabbedPane_1.addTab("map", null, SelectMap, null);
 		SelectMap.setLayout(new BoxLayout(SelectMap, 1));
-		JCheckBox mapPlayer = new JCheckBox("play this map?");
-		SelectMap.add(mapPlayer);
-		mapPlayer.addItemListener(new ItemListener() {
-
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == 1) {
-					useModMap = true;
-				} else {
-					useModMap = false;
-				}
-			}
-		});
 		JScrollPane scrollPane_8 = new JScrollPane();
 		scrollPane_8.setVerticalScrollBarPolicy(22);
 		scrollPane_8.setHorizontalScrollBarPolicy(31);
 		SelectMap.add(scrollPane_8);
 		scrollPane_8.setViewportView(modMaps);
-		JButton btnNewButton_2 = new JButton("Select Workshop Map");
+		
+		JButton btnNewButton_2 = new JButton("Delete map");
 		btnNewButton_2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				mod = (WorkShop) modMaps.getSelectedValue();
+			public void actionPerformed(ActionEvent arg0) {
+				modList.remove(modMaps.getSelectedValue());
+				mods.remove(modMaps.getSelectedIndex());
+				SetUpServer.saveMods(modList, server);
 			}
 		});
 		SelectMap.add(btnNewButton_2);
@@ -673,7 +710,9 @@ public class UnturnedGUI extends JFrame {
 		modView.add(scrollPane_9);
 		for (int i = 0;i < modList.size(); i++) {
 			WorkShop tempWork = modList.get(i);
-			allTheMods.addElement(tempWork);
+			if (tempWork.getMap() == false) {
+				allTheMods.addElement(tempWork);
+			}
 		}
 		JList allMods = new JList(allTheMods);
 		scrollPane_9.setViewportView(allMods);
@@ -690,8 +729,10 @@ public class UnturnedGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				selectedMods.addElement((WorkShop) allMods.getSelectedValue());
-				allTheMods.remove(allMods.getSelectedIndex());
+				if (((WorkShop) allMods.getSelectedValue()).getMap() == false) {
+					selectedMods.addElement((WorkShop) allMods.getSelectedValue());
+					allTheMods.remove(allMods.getSelectedIndex());
+				}
 			}
 		});
 		buttons.add(btnNewButton_4);
@@ -700,8 +741,10 @@ public class UnturnedGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				allTheMods.addElement((WorkShop) chosenMods.getSelectedValue());
-				selectedMods.remove(chosenMods.getSelectedIndex());
+				if (((WorkShop) chosenMods.getSelectedValue()).getMap() == false) {
+					allTheMods.addElement((WorkShop) chosenMods.getSelectedValue());
+					selectedMods.remove(chosenMods.getSelectedIndex());
+				}
 			}
 		});
 		buttons.add(btnNewButton_5);
@@ -725,6 +768,12 @@ public class UnturnedGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				chosenModList = Collections.list(selectedMods.elements());
+				if (modMaps.getSelectedIndex() == -1 || modMaps.getSelectedIndex() == 0) {
+					useModMap = false;
+				} else {
+					useModMap = true;
+					modList.remove(0);
+				}
 				SetUpServer.saveMods(chosenModList, server);
 				saveOptions(servers, server, mod);
 				card.next(c);
@@ -741,6 +790,8 @@ public class UnturnedGUI extends JFrame {
 		card6.add(scrollPane_3);
 
 		JTextArea finalMessage = new JTextArea();
+		finalMessage.setForeground(new Color(255, 215, 0));
+		finalMessage.setBackground(new Color(0, 0, 0));
 		finalMessage.setWrapStyleWord(true);
 		finalMessage.setLineWrap(true);
 		finalMessage.setText(
@@ -750,6 +801,7 @@ public class UnturnedGUI extends JFrame {
 		scrollPane_3.setViewportView(finalMessage);
 
 		JButton endButton = new JButton("Launch");
+		endButton.setBackground(new Color(0, 128, 0));
 		endButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SetUpServer.saveServer(servers, modList);
@@ -766,6 +818,7 @@ public class UnturnedGUI extends JFrame {
 		card6.add(endButton, BorderLayout.SOUTH);
 
 		JButton serverControls = new JButton("server commands!");
+		serverControls.setBackground(new Color(0, 128, 0));
 		serverControls.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				openWebpage("https://unturned.fandom.com/wiki/Server_Commands");
@@ -784,7 +837,7 @@ public class UnturnedGUI extends JFrame {
 		errorChecker.setText(
 				"Thanks for checking out Unterned Server Maker! If your done and everything went fine, press \"End.\" Thank you for downloading and using unturned server maker! If anything goes wrong you can reach me at the links i gave in the readme!");
 		errorChecker.setForeground(new Color(255, 255, 0));
-		errorChecker.setBackground(new Color(0, 128, 0));
+		errorChecker.setBackground(new Color(0, 0, 0));
 		scrollPane_7.setViewportView(errorChecker);
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(Color.BLACK);
