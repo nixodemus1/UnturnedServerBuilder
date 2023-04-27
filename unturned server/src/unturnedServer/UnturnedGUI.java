@@ -103,6 +103,8 @@ public class UnturnedGUI extends JFrame {
 		card_1.setLayout(new BorderLayout(0, 0));
 
 		JTextArea welcomeMessage = new JTextArea();
+		welcomeMessage.setBackground(Color.BLACK);
+		welcomeMessage.setForeground(Color.GREEN);
 		welcomeMessage.setEditable(false);
 		welcomeMessage.setWrapStyleWord(true);
 		welcomeMessage.setToolTipText("welcome mesage");
@@ -114,6 +116,7 @@ public class UnturnedGUI extends JFrame {
 		card_1.add(welcomeMessage, BorderLayout.CENTER);
 
 		JButton startButton = new JButton("Start");
+		startButton.setBackground(Color.BLACK);
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TextAreaLogProgram.printLog(cmd, path);
@@ -129,7 +132,7 @@ public class UnturnedGUI extends JFrame {
 		card1.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel = new JLabel("Wait for the consol to say \"you may press continue\"");
-		lblNewLabel.setForeground(new Color(255, 215, 0));
+		lblNewLabel.setForeground(Color.GREEN);
 		lblNewLabel.setBackground(new Color(0, 100, 0));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		card1.add(lblNewLabel, BorderLayout.NORTH);
@@ -139,7 +142,7 @@ public class UnturnedGUI extends JFrame {
 
 		// Create an instance of javax.swing.JTextArea control
 		JTextArea textPane = new JTextArea();
-		textPane.setForeground(new Color(255, 215, 0));
+		textPane.setForeground(Color.GREEN);
 		textPane.setBackground(new Color(0, 0, 0));
 		scrollPane_2.setViewportView(textPane);
 		textPane.setEditable(false);
@@ -173,7 +176,7 @@ public class UnturnedGUI extends JFrame {
 		card2.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblserverChooser = new JLabel("Please choose a server");
-		lblserverChooser.setForeground(new Color(255, 215, 0));
+		lblserverChooser.setForeground(Color.GREEN);
 		lblserverChooser.setHorizontalAlignment(SwingConstants.CENTER);
 		card2.add(lblserverChooser, BorderLayout.NORTH);
 
@@ -259,7 +262,7 @@ public class UnturnedGUI extends JFrame {
 		card3.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("please name your new server");
-		lblNewLabel_1.setForeground(new Color(255, 215, 0));
+		lblNewLabel_1.setForeground(Color.GREEN);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		card3.add(lblNewLabel_1, BorderLayout.NORTH);
 
@@ -274,7 +277,7 @@ public class UnturnedGUI extends JFrame {
 		panel_1.add(textField, BorderLayout.NORTH);
 		
 		JTextArea txtpnServerNameMust = new JTextArea();
-		txtpnServerNameMust.setForeground(new Color(255, 215, 0));
+		txtpnServerNameMust.setForeground(Color.GREEN);
 		txtpnServerNameMust.setBackground(new Color(0, 0, 0));
 		txtpnServerNameMust.setLineWrap(true);
 		txtpnServerNameMust.setWrapStyleWord(true);
@@ -303,7 +306,7 @@ public class UnturnedGUI extends JFrame {
 		card4.add(scrollPane_1, BorderLayout.CENTER);
 
 		JTextArea txtrYouShouldSee = new JTextArea();
-		txtrYouShouldSee.setForeground(new Color(255, 215, 0));
+		txtrYouShouldSee.setForeground(Color.GREEN);
 		txtrYouShouldSee.setBackground(new Color(0, 0, 0));
 		txtrYouShouldSee.setEditable(false);
 		scrollPane_1.setViewportView(txtrYouShouldSee);
@@ -332,29 +335,39 @@ public class UnturnedGUI extends JFrame {
 		dtrpnWriteYourWelcome.setText("write your welcome message here!");
 
 		JPanel card5 = new JPanel();
+		card5.setBackground(Color.BLACK);
 		getContentPane().add(card5, "name_1969951988600");
 		card5.setLayout(new BorderLayout(0, 0));
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(Color.LIGHT_GRAY);
+		tabbedPane.setForeground(Color.BLACK);
 		tabbedPane.setToolTipText("options");
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		card5.add(tabbedPane);
 
 		JPanel optionsName = new JPanel();
+		optionsName.setBackground(Color.BLACK);
+		optionsName.setForeground(Color.ORANGE);
 		tabbedPane.addTab("Name", null, optionsName, null);
 
 		JLabel nameLabel = new JLabel("server name");
+		nameLabel.setForeground(Color.GREEN);
 		optionsName.add(nameLabel);
 
 		txtName = new JTextField();
+		txtName.setBackground(Color.BLACK);
+		txtName.setForeground(Color.GREEN);
 		txtName.setText("New");
 		optionsName.add(txtName);
 		txtName.setColumns(10);
 
 		JLabel lblNewLabel_5 = new JLabel("please make name more than 5 letters");
+		lblNewLabel_5.setForeground(Color.GREEN);
 		optionsName.add(lblNewLabel_5);
 
 		JPanel optionsPort = new JPanel();
+		optionsPort.setBackground(Color.DARK_GRAY);
 		tabbedPane.addTab("internet", null, optionsPort, null);
 		optionsPort.setLayout(new BoxLayout(optionsPort, BoxLayout.Y_AXIS));
 
@@ -371,6 +384,8 @@ public class UnturnedGUI extends JFrame {
 		optionsPort.add(chckbxLAN);
 
 		txtPort = new JTextField();
+		txtPort.setBackground(Color.BLACK);
+		txtPort.setForeground(Color.GREEN);
 		txtPort.setMaximumSize(new Dimension(2147483647, 20));
 		txtPort.setText("27015");
 		optionsPort.add(txtPort);
@@ -380,6 +395,8 @@ public class UnturnedGUI extends JFrame {
 		optionsPort.add(separator);
 
 		JTextArea txtrIfPlayingOver = new JTextArea();
+		txtrIfPlayingOver.setForeground(Color.GREEN);
+		txtrIfPlayingOver.setBackground(Color.BLACK);
 		txtrIfPlayingOver.setWrapStyleWord(true);
 		txtrIfPlayingOver.setText(
 				"If playing over internet instead of LAN, please make sure the port is already port forwarded. you can look up on google how to do that. The default port is 27015");
@@ -387,6 +404,7 @@ public class UnturnedGUI extends JFrame {
 		optionsPort.add(txtrIfPlayingOver);
 
 		JPanel optionsMap = new JPanel();
+		optionsMap.setBackground(Color.BLACK);
 		tabbedPane.addTab("Map", null, optionsMap, null);
 
 		JScrollPane scrollPane_4 = new JScrollPane();
@@ -395,6 +413,8 @@ public class UnturnedGUI extends JFrame {
 		optionsMap.add(scrollPane_4);
 
 		mapList = new JList<String>();
+		mapList.setForeground(Color.GREEN);
+		mapList.setBackground(Color.BLACK);
 		scrollPane_4.setViewportView(mapList);
 		mapList.setValueIsAdjusting(true);
 		mapList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -411,10 +431,13 @@ public class UnturnedGUI extends JFrame {
 		});
 
 		JPanel optionsPassword = new JPanel();
+		optionsPassword.setBackground(Color.BLACK);
 		tabbedPane.addTab("Password", null, optionsPassword, null);
 		optionsPassword.setLayout(new BoxLayout(optionsPassword, BoxLayout.Y_AXIS));
 
 		passwordChecker = new JCheckBox("password protected?");
+		passwordChecker.setBackground(Color.BLACK);
+		passwordChecker.setForeground(Color.GREEN);
 		passwordChecker.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == 1) {
@@ -431,16 +454,22 @@ public class UnturnedGUI extends JFrame {
 		optionsPassword.add(lblNewLabel_2);
 
 		passwordField = new JTextField("password");
+		passwordField.setBackground(Color.BLACK);
+		passwordField.setForeground(Color.GREEN);
 		passwordField.setMaximumSize(new Dimension(2147483647, 20));
 		optionsPassword.add(passwordField);
 
 		JPanel optionsGamemode = new JPanel();
+		optionsGamemode.setBackground(Color.BLACK);
 		tabbedPane.addTab("GameMode", null, optionsGamemode, null);
 
 		JLabel lblNewLabel_3 = new JLabel("max players?");
+		lblNewLabel_3.setForeground(Color.GREEN);
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 
 		maxPlayers = new JSlider();
+		maxPlayers.setBackground(Color.BLACK);
+		maxPlayers.setForeground(Color.GREEN);
 		maxPlayers.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				JSlider source = (JSlider) e.getSource();
@@ -457,6 +486,8 @@ public class UnturnedGUI extends JFrame {
 		maxPlayers.setMaximum(25);
 
 		chckbxNewCheckBox_1 = new JCheckBox("PvP?");
+		chckbxNewCheckBox_1.setBackground(Color.BLACK);
+		chckbxNewCheckBox_1.setForeground(Color.GREEN);
 		chckbxNewCheckBox_1.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == 1) {
@@ -472,9 +503,13 @@ public class UnturnedGUI extends JFrame {
 				new DefaultComboBoxModel<String>(new String[] { "first person", "third person", "both", "vehicle" }));
 
 		difficulty = new JComboBox<String>();
+		difficulty.setBackground(Color.LIGHT_GRAY);
+		difficulty.setForeground(Color.BLACK);
 		difficulty.setModel(new DefaultComboBoxModel<String>(new String[] { "easy", "medium", "hard" }));
 
 		chckbxCheats = new JCheckBox("cheats?");
+		chckbxCheats.setForeground(Color.GREEN);
+		chckbxCheats.setBackground(Color.BLACK);
 		if (cheats = true) {
 			chckbxCheats.setSelected(true);
 		} else {
@@ -498,10 +533,12 @@ public class UnturnedGUI extends JFrame {
 		optionsGamemode.add(chckbxCheats);
 
 		JPanel optionsWelcome = new JPanel();
+		optionsWelcome.setBackground(Color.BLACK);
 		tabbedPane.addTab("Welcome", null, optionsWelcome, null);
 		optionsWelcome.setLayout(new BoxLayout(optionsWelcome, BoxLayout.Y_AXIS));
 
 		JLabel lblNewLabel_4 = new JLabel("write welcome message!");
+		lblNewLabel_4.setForeground(Color.GREEN);
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		optionsWelcome.add(lblNewLabel_4);
 
@@ -509,10 +546,14 @@ public class UnturnedGUI extends JFrame {
 		optionsWelcome.add(scrollPane_5);
 
 		welcomePane = new JEditorPane();
+		welcomePane.setForeground(Color.GREEN);
+		welcomePane.setBackground(Color.BLACK);
 		scrollPane_5.setViewportView(welcomePane);
-		welcomePane.setText(welcome);
+		welcomePane.setText("Write your welcome message here!");
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.BLACK);
+		panel_2.setForeground(Color.GREEN);
 		card5.add(panel_2, BorderLayout.SOUTH);
 
 		JButton wiki = new JButton("wiki");
@@ -554,7 +595,7 @@ public class UnturnedGUI extends JFrame {
 		card5_1.add(scrollPane_6);
 
 		JTextPane printResults = new JTextPane();
-		printResults.setForeground(new Color(255, 215, 0));
+		printResults.setForeground(Color.GREEN);
 		printResults.setBackground(new Color(0, 0, 0));
 		printResults.setText("press refresh to check results");
 		scrollPane_6.setViewportView(printResults);
@@ -790,7 +831,7 @@ public class UnturnedGUI extends JFrame {
 		card6.add(scrollPane_3);
 
 		JTextArea finalMessage = new JTextArea();
-		finalMessage.setForeground(new Color(255, 215, 0));
+		finalMessage.setForeground(Color.GREEN);
 		finalMessage.setBackground(new Color(0, 0, 0));
 		finalMessage.setWrapStyleWord(true);
 		finalMessage.setLineWrap(true);
@@ -836,7 +877,7 @@ public class UnturnedGUI extends JFrame {
 		errorChecker.setLineWrap(true);
 		errorChecker.setText(
 				"Thanks for checking out Unterned Server Maker! If your done and everything went fine, press \"End.\" Thank you for downloading and using unturned server maker! If anything goes wrong you can reach me at the links i gave in the readme!");
-		errorChecker.setForeground(new Color(255, 255, 0));
+		errorChecker.setForeground(Color.GREEN);
 		errorChecker.setBackground(new Color(0, 0, 0));
 		scrollPane_7.setViewportView(errorChecker);
 		JPanel panel_5 = new JPanel();
