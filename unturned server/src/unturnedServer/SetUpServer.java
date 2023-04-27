@@ -472,6 +472,11 @@ public class SetUpServer {
 			if (modList.size() != 0) {
 				System.out.println("File opening: " + UMods.getName());
 				FileWriter modWriter = new FileWriter(UMods);
+				modWriter.write(String.format("%s%n", "------------------------------"));
+				modWriter.write(String.format("%s%n","do not use modded map"));
+				modWriter.write(String.format("%s%n","www.nope.com/?id=0000000000"));
+				modWriter.write(String.format("%s%n","0000000000"));
+				modWriter.write(String.format("%s%n","true"));
 				for (int i = 0; i < modList.size(); i++) {
 					WorkShop mod = modList.get(i);
 					modWriter.write(String.format("%s%n", "------------------------------"));

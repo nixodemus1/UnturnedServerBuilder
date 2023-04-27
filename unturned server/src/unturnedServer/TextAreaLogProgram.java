@@ -140,7 +140,7 @@ public class TextAreaLogProgram extends JFrame {
 					System.out.println("you may now press continue");
 				} catch (Exception e) { // exception thrown
 
-					System.err.println("Command failed!");
+					System.err.println("Command failed!, " + e);
 
 				}
 				try {

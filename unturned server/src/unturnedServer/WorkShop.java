@@ -105,6 +105,6 @@ public class WorkShop {
 	}
 
 	public String toString() {
-		return String.valueOf(this.name) + " map: " + this.workShopMap + " " + this.idNumber;
+		return String.valueOf(this.name) + " " + this.idNumber;
 	}
 }
