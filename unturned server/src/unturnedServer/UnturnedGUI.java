@@ -116,7 +116,8 @@ public class UnturnedGUI extends JFrame {
 		card_1.add(welcomeMessage, BorderLayout.CENTER);
 
 		JButton startButton = new JButton("Start");
-		startButton.setBackground(Color.BLACK);
+		startButton.setForeground(new Color(255, 215, 0));
+		startButton.setBackground(new Color(0, 100, 0));
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TextAreaLogProgram.printLog(cmd, path);
@@ -158,8 +159,8 @@ public class UnturnedGUI extends JFrame {
 		card1.add(panel, BorderLayout.SOUTH);
 
 		JButton continue1 = new JButton("Continue");
-		continue1.setBackground(new Color(255, 255, 255));
-		continue1.setForeground(new Color(0, 0, 0));
+		continue1.setBackground(new Color(0, 100, 0));
+		continue1.setForeground(new Color(255, 215, 0));
 		panel.add(continue1);
 		continue1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -185,7 +186,7 @@ public class UnturnedGUI extends JFrame {
 
 		JList<String> list = new JList<String>();
 		list.setBackground(new Color(0, 0, 0));
-		list.setForeground(new Color(255, 215, 0));
+		list.setForeground(new Color(124, 252, 0));
 		DefaultListModel serverModel  = new DefaultListModel();
 		for (int i = 0;i < servers.size(); i++) {
 			Servers tempWork = servers.get(i);
@@ -208,6 +209,8 @@ public class UnturnedGUI extends JFrame {
 		card2.add(splitPane, BorderLayout.SOUTH);
 		
 		JButton continue2 = new JButton("Continue");
+		continue2.setForeground(new Color(255, 215, 0));
+		continue2.setBackground(new Color(0, 128, 0));
 		continue2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (list.getSelectedIndex() == -1) {
@@ -240,6 +243,8 @@ public class UnturnedGUI extends JFrame {
 		splitPane.setLeftComponent(continue2);
 		
 		JButton deleteButton = new JButton("Delete");
+		deleteButton.setForeground(new Color(255, 215, 0));
+		deleteButton.setBackground(new Color(0, 100, 0));
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (list.getSelectedIndex() == -1 || list.getSelectedIndex() == 0) {
@@ -281,18 +286,25 @@ public class UnturnedGUI extends JFrame {
 		txtpnServerNameMust.setBackground(new Color(0, 0, 0));
 		txtpnServerNameMust.setLineWrap(true);
 		txtpnServerNameMust.setWrapStyleWord(true);
-		txtpnServerNameMust.setText("server name must be more than 5 characters long. Please use _ instead of spaces. Thank you!");
+		txtpnServerNameMust.setText("server name must be more than 5 characters long. Thank you!");
 		txtpnServerNameMust.setEditable(false);
 		panel_1.add(txtpnServerNameMust, BorderLayout.CENTER);
 
 		JButton continue3 = new JButton("Continue");
+		continue3.setForeground(new Color(255, 215, 0));
 		continue3.setBackground(new Color(0, 100, 0));
 		continue3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				server.setName(textField.getText());
-				serverName = server.getName();
-				txtName.setText(serverName);
-				card.next(c);
+				if (textField.getText().length() > 5) {
+					String text = textField.getText().replace(' ', '_');
+					textField.setText(text);
+					server.setName(textField.getText());
+					serverName = server.getName();
+					txtName.setText(serverName);
+					card.next(c);
+				} else {
+					txtpnServerNameMust.setText("name is less than 5 characters");
+				}
 			}
 		});
 		card3.add(continue3, BorderLayout.SOUTH);
@@ -319,6 +331,8 @@ public class UnturnedGUI extends JFrame {
 		
 
 		JButton Continue4 = new JButton("Continue");
+		Continue4.setForeground(new Color(255, 215, 0));
+		Continue4.setBackground(new Color(0, 100, 0));
 		Continue4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -450,6 +464,7 @@ public class UnturnedGUI extends JFrame {
 		optionsPassword.add(passwordChecker);
 
 		JLabel lblNewLabel_2 = new JLabel("if so, enter password:");
+		lblNewLabel_2.setForeground(new Color(0, 255, 0));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		optionsPassword.add(lblNewLabel_2);
 
@@ -499,12 +514,14 @@ public class UnturnedGUI extends JFrame {
 		});
 
 		view = new JComboBox<String>();
+		view.setForeground(new Color(255, 215, 0));
+		view.setBackground(new Color(0, 100, 0));
 		view.setModel(
 				new DefaultComboBoxModel<String>(new String[] { "first person", "third person", "both", "vehicle" }));
 
 		difficulty = new JComboBox<String>();
-		difficulty.setBackground(Color.LIGHT_GRAY);
-		difficulty.setForeground(Color.BLACK);
+		difficulty.setBackground(new Color(0, 100, 0));
+		difficulty.setForeground(new Color(255, 215, 0));
 		difficulty.setModel(new DefaultComboBoxModel<String>(new String[] { "easy", "medium", "hard" }));
 
 		chckbxCheats = new JCheckBox("cheats?");
@@ -557,6 +574,8 @@ public class UnturnedGUI extends JFrame {
 		card5.add(panel_2, BorderLayout.SOUTH);
 
 		JButton wiki = new JButton("wiki");
+		wiki.setForeground(new Color(255, 215, 0));
+		wiki.setBackground(new Color(0, 100, 0));
 		wiki.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				openWebpage(
@@ -566,6 +585,8 @@ public class UnturnedGUI extends JFrame {
 		panel_2.add(wiki);
 
 		JButton btnSave = new JButton("Save");
+		btnSave.setForeground(new Color(255, 215, 0));
+		btnSave.setBackground(new Color(0, 100, 0));
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!txtPort.getText().matches("^[0-9]*$") || txtName.getText().length() < 5) {
@@ -605,6 +626,8 @@ public class UnturnedGUI extends JFrame {
 		card5_1.add(panel_3);
 
 		JButton btnBackButton = new JButton("Back");
+		btnBackButton.setForeground(new Color(255, 215, 0));
+		btnBackButton.setBackground(new Color(0, 100, 0));
 		btnBackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -614,6 +637,8 @@ public class UnturnedGUI extends JFrame {
 		panel_3.add(btnBackButton);
 
 		JButton finalContinue = new JButton("Continue");
+		finalContinue.setForeground(new Color(255, 215, 0));
+		finalContinue.setBackground(new Color(0, 100, 0));
 		finalContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -627,6 +652,8 @@ public class UnturnedGUI extends JFrame {
 		panel_3.add(finalContinue);
 
 		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.setForeground(new Color(255, 215, 0));
+		btnRefresh.setBackground(new Color(0, 100, 0));
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				printResults.setText("name = " + serverName + "\nLan = " + LAN + "\nport = " + port + "\nmap = " + map
@@ -657,10 +684,13 @@ public class UnturnedGUI extends JFrame {
 		panel_10.setBackground(new Color(0, 0, 0));
 		addMod.add(panel_10);
 		workShopURL = new JTextField();
+		workShopURL.setForeground(new Color(0, 255, 0));
+		workShopURL.setBackground(new Color(0, 0, 0));
 		panel_10.add(workShopURL);
 		workShopURL.setColumns(10);
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Map?");
-		chckbxNewCheckBox.setForeground(new Color(0, 0, 0));
+		chckbxNewCheckBox.setBackground(new Color(0, 0, 0));
+		chckbxNewCheckBox.setForeground(new Color(0, 255, 0));
 		panel_10.add(chckbxNewCheckBox);
 		chckbxNewCheckBox.addItemListener(new ItemListener() {
 
@@ -681,6 +711,8 @@ public class UnturnedGUI extends JFrame {
 			}
 		}
 		JList modMaps = new JList(mods);
+		modMaps.setForeground(new Color(0, 255, 0));
+		modMaps.setBackground(new Color(0, 0, 0));
 		modMaps.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
 				selectedMods.removeElement(mod);
@@ -692,6 +724,8 @@ public class UnturnedGUI extends JFrame {
 		});
 		modMaps.setSelectedIndex(0);
 		JButton btnNewButton_1 = new JButton("Add");
+		btnNewButton_1.setForeground(new Color(255, 215, 0));
+		btnNewButton_1.setBackground(new Color(0, 100, 0));
 		btnNewButton_1.addActionListener(new ActionListener() {
 
 			@Override
@@ -724,6 +758,8 @@ public class UnturnedGUI extends JFrame {
 		scrollPane_8.setViewportView(modMaps);
 		
 		JButton btnNewButton_2 = new JButton("Delete map");
+		btnNewButton_2.setForeground(new Color(255, 215, 0));
+		btnNewButton_2.setBackground(new Color(0, 100, 0));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				modList.remove(modMaps.getSelectedValue());
@@ -756,16 +792,23 @@ public class UnturnedGUI extends JFrame {
 			}
 		}
 		JList allMods = new JList(allTheMods);
+		allMods.setBackground(new Color(0, 0, 0));
+		allMods.setForeground(new Color(0, 255, 0));
 		scrollPane_9.setViewportView(allMods);
 		JScrollPane scrollPane_10 = new JScrollPane();
 		scrollPane_10.setVerticalScrollBarPolicy(22);
 		scrollPane_10.setHorizontalScrollBarPolicy(31);
 		modView.add(scrollPane_10);
 		JList chosenMods = new JList(selectedMods);
+		chosenMods.setBackground(new Color(0, 0, 0));
+		chosenMods.setForeground(new Color(0, 255, 0));
 		scrollPane_10.setViewportView(chosenMods);
 		JPanel buttons = new JPanel();
+		buttons.setBackground(new Color(0, 100, 0));
 		listofMods.add((Component) buttons, "South");
 		JButton btnNewButton_4 = new JButton("Add");
+		btnNewButton_4.setForeground(new Color(255, 215, 0));
+		btnNewButton_4.setBackground(new Color(0, 0, 0));
 		btnNewButton_4.addActionListener(new ActionListener() {
 
 			@Override
@@ -778,6 +821,8 @@ public class UnturnedGUI extends JFrame {
 		});
 		buttons.add(btnNewButton_4);
 		JButton btnNewButton_5 = new JButton("Remove");
+		btnNewButton_5.setForeground(new Color(255, 215, 0));
+		btnNewButton_5.setBackground(new Color(0, 0, 0));
 		btnNewButton_5.addActionListener(new ActionListener() {
 
 			@Override
@@ -790,6 +835,8 @@ public class UnturnedGUI extends JFrame {
 		});
 		buttons.add(btnNewButton_5);
 		JButton btnNewButton_3 = new JButton("Delete");
+		btnNewButton_3.setForeground(new Color(255, 215, 0));
+		btnNewButton_3.setBackground(new Color(0, 0, 0));
 		btnNewButton_3.addActionListener(new ActionListener() {
 
 			@Override
@@ -804,6 +851,8 @@ public class UnturnedGUI extends JFrame {
 		panel_4.setBackground(new Color(0, 0, 0));
 		cardMODS.add(panel_4, "South");
 		JButton btnNewButton = new JButton("Continue");
+		btnNewButton.setForeground(new Color(255, 215, 0));
+		btnNewButton.setBackground(new Color(0, 100, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -842,7 +891,8 @@ public class UnturnedGUI extends JFrame {
 		scrollPane_3.setViewportView(finalMessage);
 
 		JButton endButton = new JButton("Launch");
-		endButton.setBackground(new Color(0, 128, 0));
+		endButton.setForeground(new Color(255, 215, 0));
+		endButton.setBackground(new Color(0, 100, 0));
 		endButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SetUpServer.saveServer(servers, modList);
@@ -859,7 +909,8 @@ public class UnturnedGUI extends JFrame {
 		card6.add(endButton, BorderLayout.SOUTH);
 
 		JButton serverControls = new JButton("server commands!");
-		serverControls.setBackground(new Color(0, 128, 0));
+		serverControls.setForeground(new Color(255, 215, 0));
+		serverControls.setBackground(new Color(0, 100, 0));
 		serverControls.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				openWebpage("https://unturned.fandom.com/wiki/Server_Commands");
@@ -884,6 +935,8 @@ public class UnturnedGUI extends JFrame {
 		panel_5.setBackground(Color.BLACK);
 		card7.add(panel_5, "South");
 		JButton programEnder = new JButton("End");
+		programEnder.setForeground(new Color(255, 215, 0));
+		programEnder.setBackground(new Color(0, 100, 0));
 		programEnder.addActionListener(new ActionListener() {
 
 			@Override
