@@ -25,8 +25,5 @@ hs_err_pid*
 # the server folder
 /server/
 
-# the images folder
-/Images/
-
 #bin
 /bin/
