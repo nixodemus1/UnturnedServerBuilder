@@ -6,6 +6,12 @@ so chose! Just please dont monotize it, or try and trick people by making them p
 other people whos code i used! If you make something cool please feel free to send it my way on twitter @nixodemus1 or at my email at TWTWETheGame@gmail.com!
 I hope this helps make things easier and i hope you have fun playing unturned with your friends! please feel free to check me out on youtube while your reading: http://www.youtube.com/nixodemus1
 
+Here is a video on how to use the Unturned Server Maker:
+https://www.youtube.com/watch?v=eSTzAm3EakM
+
+and here is the itch.io page with the download if needed:
+https://nixodemus1.itch.io/the-unturned-server-maker
+
 Have fun and enjoy!
 
 also, i now have a form you can fill out if you run into bugs: https://forms.gle/A9ypgUFbS15Ckpyk7
